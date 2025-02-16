@@ -1,4 +1,4 @@
-<aside class="flex flex-col bg-green-600 h-screen gap-4"> <!-- Fixed width (20%) -->
+<aside class="flex flex-col bg-green-700 h-screen gap-4"> <!-- Fixed width (20%) -->
   <div class="flex flex-row justify-center my-10">
     <img
       ngSrc="assets/images/AiUMainLogo@4x.png"
@@ -10,7 +10,7 @@
     <ul>
       <li
         *ngFor="let item of sidebarItems"
-        class="p-3 hover:bg-green-700 cursor-pointer text-white text-2xl"
+        class="p-3 hover:bg-green-800 cursor-pointer text-white text-2xl"
       [routerLink]="item.path"
       >
       {{ item.title }}
