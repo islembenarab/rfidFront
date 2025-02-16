@@ -4,6 +4,7 @@ import {ReadersComponent} from './components/readers/readers.component';
 import {SettingComponent} from './components/setting/setting.component';
 import {ProductsComponent} from './components/products/products.component';
 import {TraceProductsComponent} from './components/trace-products/trace-products.component';
+import {ClearApiUrlComponent} from './shared/clear-api-url/clear-api-url.component';
 
 export const routes: Routes = [
   {
@@ -56,4 +57,6 @@ export const routes: Routes = [
       roles: ['user', 'admin'],
     },
   },
+  { path: 'clear-api-url',
+    component: ClearApiUrlComponent },
 ];

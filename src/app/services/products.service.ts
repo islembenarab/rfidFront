@@ -3,14 +3,17 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment.development';
 import {catchError, Observable} from 'rxjs';
 import {PaginatedResponse} from '../modules/pagination-response/pagination-response.module';
+import {ApiUrlService} from './api-url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  private apiUrl = environment.api_url;
+  private apiUrl: string | null ;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private apiService:ApiUrlService) {
+    this.apiUrl=apiService.getApiUrl();
+  }
   // return all products
   getProducts(page: number = 0, size: number = 5):Observable<PaginatedResponse<any>>{
     const params = new HttpParams()

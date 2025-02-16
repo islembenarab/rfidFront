@@ -3,13 +3,16 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment.development';
 import {catchError, Observable} from 'rxjs';
 import {PaginatedResponse} from '../modules/pagination-response/pagination-response.module';
+import {ApiUrlService} from './api-url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReadersService {
-  private apiUrl = environment.api_url;
-  constructor(private http: HttpClient) { }
+  private readonly apiUrl: string | null ;
+  constructor(private http: HttpClient ,private apiService:ApiUrlService) {
+    this.apiUrl=apiService.getApiUrl();
+  }
   // Fetch paginated readers
   getReaders(page: number = 0, size: number = 5): Observable<PaginatedResponse<any>> {
     const params = new HttpParams()

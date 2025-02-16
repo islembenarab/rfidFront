@@ -4,16 +4,19 @@ import {PaginatedResponse} from '../modules/pagination-response/pagination-respo
 import {catchError, Observable, SubscriptionLike} from 'rxjs';
 import {environment} from '../../environments/environment.development';
 import {EventSourceService} from './event-source.service';
+import {ApiUrlService} from './api-url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TraceProductsService {
-  private apiUrl = environment.api_url;
+  private readonly apiUrl: string | null ;
   private readonly eventSourceSubscription!: SubscriptionLike;
   private options = { };
   private eventNames = ['rfid-tag'];
-  constructor(private http:HttpClient,private eventSourceService: EventSourceService) { }
+  constructor(private http:HttpClient,private eventSourceService: EventSourceService , private apiService:ApiUrlService) {
+    this.apiUrl=apiService.getApiUrl();
+  }
   getTraceProducts(page: number = 0, size: number = 5) : Observable<PaginatedResponse<any>> {
     const params = new HttpParams()
       .set('page', page.toString()) // Current page (0-based index)
