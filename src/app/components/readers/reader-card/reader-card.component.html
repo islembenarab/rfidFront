@@ -1,0 +1,33 @@
+<mat-card class="flex flex-row bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+  <!-- Reader Photo -->
+  <img
+    mat-card-image
+    [src]="reader.photoUrl || 'assets/images/Impinj_Speedway_Reader_No_BG.png'"
+    alt="Reader Photo"
+    class="h-48 object-cover"
+  />
+  <div>
+    <!-- Card Header -->
+    <mat-card-header class="bg-gray-100 p-4 rounded-t-lg border-b border-gray-200">
+      <mat-card-title class="text-lg font-bold">{{ reader.hostname }}</mat-card-title>
+    </mat-card-header>
+
+    <!-- Card Content -->
+    <mat-card-content class="p-4">
+      <div class="flex items-center justify-between gap-2">
+        <span class="text-sm text-gray-700"><strong>Connected:</strong> {{ reader.connected ? 'Yes' : 'No' }}</span>
+        <mat-slide-toggle
+          [checked]="reader.connected"
+          (change)="onToggleConnect($event, reader)"
+          color="black"
+          [class.mat-slide-toggle-checked]="reader.connected ? 'black-toggle' : ''"
+          class="scale-75"
+        >
+        </mat-slide-toggle>
+      </div>
+      <p class="text-sm text-gray-700"><strong>Zone:</strong> {{ reader.readerPlace || 'N/A' }}</p>
+      <p class="text-sm text-gray-700"><strong>Port:</strong> {{ reader.port || 'N/A' }}</p>
+      <p class="text-sm text-gray-700"><strong>Use TLS:</strong> {{ reader.useTls ? 'Yes' : 'No' }}</p>
+    </mat-card-content>
+  </div>
+</mat-card>

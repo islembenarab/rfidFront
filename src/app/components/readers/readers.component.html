@@ -1,0 +1,30 @@
+<!-- Container for Grid and Paginator -->
+<div class="flex flex-col justify-between h-screen my-0">
+  <!-- Grid of Cards -->
+  <div>
+    <div *ngIf="readers.length > 0"
+         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6 flex-grow">
+      <app-reader-card
+        *ngFor="let reader of readers"
+        [reader]="reader"
+        (toggleChanged)="onToggleChanged()"
+      ></app-reader-card>
+    </div>
+
+    <!-- Display Message if No Readers Found -->
+    <div *ngIf="readers.length === 0" class="p-6 flex-grow">
+      <p class="text-gray-700">No readers found.</p>
+    </div>
+  </div>
+  <!-- Pagination Controls -->
+  <mat-paginator
+    [length]="totalElements"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    [pageSizeOptions]="[5,10]"
+    (page)="onPageChange($event)"
+    aria-label="Select page"
+    class="bg-gray-100 rounded-lg p-1 "
+  >
+  </mat-paginator>
+</div>

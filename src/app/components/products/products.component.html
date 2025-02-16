@@ -1,0 +1,25 @@
+<div>
+  <div class="flex flex-col md:flex-row gap-4">
+    <div class="flex-1">
+      <h1 class="text-3xl font-bold">Products</h1>
+    </div>
+<!--    <div class="flex-1">-->
+<!--      <button-->
+<!--        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"-->
+<!--        (click)="openDialog()"-->
+<!--      >-->
+<!--        Add Product-->
+<!--      </button>-->
+<!--    </div>-->
+  </div>
+  <div class="mt-4">
+    <app-reusable-table
+      [data]="products"
+      [columns]="columns"
+      [totalItems]="totalElements"
+      [pageIndex]="currentPage"
+      [pageSize]="pageSize"
+      (pageChange)="onPageChange($event)"
+    ></app-reusable-table>
+  </div>
+</div>
