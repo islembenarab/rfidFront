@@ -1,16 +1,16 @@
-<aside class="flex flex-col bg-red-600 h-screen gap-4"> <!-- Fixed width (20%) -->
-  <div class="p-4">
+<aside class="flex flex-col bg-green-600 h-screen gap-4"> <!-- Fixed width (20%) -->
+  <div class="flex flex-row justify-center my-10">
     <img
-      ngSrc="assets/images/catering_enhanced.png"
+      ngSrc="assets/images/AiUMainLogo@4x.png"
       alt="Catering Air Algerie Logo"
-      class="h-12 w-auto"
-      height="550" width="732"/>
+      class="h-12 w-auto "
+      height="868" width="1664"/>
   </div>
   <nav>
     <ul>
       <li
         *ngFor="let item of sidebarItems"
-        class="p-3 hover:bg-red-500 cursor-pointer text-white text-2xl"
+        class="p-3 hover:bg-green-700 cursor-pointer text-white text-2xl"
       [routerLink]="item.path"
       >
       {{ item.title }}
