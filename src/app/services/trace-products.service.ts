@@ -22,7 +22,7 @@ export class TraceProductsService {
       .set('page', page.toString()) // Current page (0-based index)
       .set('size', size.toString()) // Number of items per page
       .set('sort', 'lastSeen,desc'); // Sort by timestamp in descending order
-
+    console.log(params)
     return this.http.get<PaginatedResponse<any>>(this.apiUrl + 'trace', { params }).pipe(
       catchError((error) => {
         console.error('API Error:', error);

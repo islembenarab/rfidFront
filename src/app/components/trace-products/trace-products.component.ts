@@ -53,7 +53,7 @@ export class TraceProductsComponent implements OnInit ,OnDestroy {
   }
 
   private loadTraceProducts() {
-    this.traceProduct.getTraceProducts().subscribe({
+    this.traceProduct.getTraceProducts(this.currentPage,this.pageSize).subscribe({
       next: (response) => {
         this.traces = response.content; // Update the list of trace products
         this.totalElements = response.page.totalElements; // Update total elements
